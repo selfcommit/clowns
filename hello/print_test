@@ -1,0 +1,32 @@
+import urllib2
+import json
+#https://developers.google.com/appengine/docs/python/urlfetch/
+from google.appengine.api import apiproxy_stub_map 
+from google.appengine.api import urlfetch
+from google.appengine.api import urlfetch_stub
+
+apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap() 
+apiproxy_stub_map.apiproxy.RegisterStub('urlfetch', 
+urlfetch_stub.URLFetchServiceStub()) 
+
+bot_icon = 'https://s3-us-west-2.amazonaws.com/slack-files2/avatars/2014-08-29/2598783684_48.jpg'
+#Chat message API https://api.slack.com/methods/chat.postMessage
+incoming_webhook = 'https://stackexchange.slack.com/services/hooks/incoming-webhook?token=iFNL7NRbD71q0v3XgxCqq4wU'
+	
+if 1:
+	command_request = '/stackbot'
+	channel_name = 'dans-test-cave'
+	user_name = 'dan'
+	text = 'Hi Stackbot'
+	form_fields = {'text': '@'+user_name+' Please <http://g.co/hangout/stackbot'+user_name+' | Join My Meeting!>', 'username':'StackBot', 'icon_url':bot_icon, 'link_names' : '1', 'parse' : 'none', 'channel' : '#'+channel_name }
+	data = json.dumps(form_fields)
+
+	req = urllib2.Request(url = incoming_webhook, data = data, headers = {'content-type' : 'application/json'})
+	result = urllib2.urlopen(req) 
+	#print data
+
+	print dir(result)
+	
+
+else:
+	print request
