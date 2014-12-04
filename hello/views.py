@@ -8,7 +8,7 @@ from google.appengine.api import urlfetch
 
 bot_icon = 'https://s3-us-west-2.amazonaws.com/slack-files2/avatars/2014-08-29/2598783684_48.jpg'
 #Chat message API https://api.slack.com/methods/chat.postMessage
-incoming_webhook = 'https://stackexchange.slack.com/services/hooks/incoming-webhook?token=iFNL7NRbD71q0v3XgxCqq4wU'
+incoming_webhook = 'Derp'
 
 def home(request):
     return http.HttpResponse('<head><link rel="icon" href="static/favicon.ico"></head><body><center><a href=https://www.google.com/search?q=scary+clown><img src=static/clown1.jpg></a></center></body>')
